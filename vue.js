@@ -24,7 +24,7 @@ const App = {
   methods: {
     prev() {
       // когда нажимаем кнопку назад
-      --this.activeIndex;
+      if (this.activeIndex !== 0) --this.activeIndex;
       console.log('когда нажимаем кнопку назад');
     },
     reset() {
@@ -55,9 +55,9 @@ const App = {
   computed: {
     // тут стоит определить несколько свойств:
     // 1. текущий выбранный шаг
-    getActiveIndex() {
-      return this.activeIndex;
-    },
+    // getActiveIndex() {
+    //   return this.activeIndex + 1;
+    // },
     // 2. выключена ли кнопка назад
     isFirstStep() {
       return (this.activeIndex === 0);
@@ -73,13 +73,9 @@ const App = {
       }
       return this.statics.labelButtonNext;
     },
-    getPrevLabel() {
-      return this.statics.labelButtonPrev;
-    },
-    getResetLabel() {
-      return this.statics.labelButtonReset;
+    getCurrentStep() {
+      return this.steps[this.activeIndex];
     }
-
   }
 }
 

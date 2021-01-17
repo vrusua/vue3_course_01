@@ -14,24 +14,24 @@
 
       <div class="steps" v-if="steps.length > 0">
         <div class="steps-content">
-          {{ steps[getActiveIndex].text }}
+          {{ getCurrentStep.text }}
         </div>
         <ul class="steps-list">
           <li
             v-for="(step, index) in steps"
             :key="step.title"
             @click="setActive(index)"
-            class="steps-item" :class="{active: getActiveIndex === index, done: (getActiveIndex > index)}"
+            class="steps-item" :class="{active: activeIndex === index, done: (activeIndex > index)}"
           >
             <span>{{ index + 1 }}</span> {{ step.title }}
           </li>
         </ul>
         <div v-if="!isFinished">
-          <button class="btn" :disabled="isFirstStep" @click="prev">{{ getPrevLabel }}</button>
+          <button class="btn" :disabled="isFirstStep" @click="prev">{{ statics.labelButtonPrev }}</button>
           <button class="btn primary" @click="nextOrFinish">{{ getNextLabel }}</button>
         </div>
         <div v-else>
-          <button class="btn primary" @click="reset">{{ getResetLabel }}</button>
+          <button class="btn primary" @click="reset">{{ statics.labelButtonReset }}</button>
         </div>
 
       </div>
