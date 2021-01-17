@@ -26,12 +26,12 @@
             <span>{{ index + 1 }}</span> {{ step.title }}
           </li>
         </ul>
-        <div v-if="!isLastStep">
-          <button class="btn" :disabled="isFirstStep" @click="prev">{{ statics.labelButtonPrev }}</button>
-          <button class="btn primary" @click="nextOfFinish">{{ statics.labelButtonNext }}</button>
+        <div v-if="!isFinished">
+          <button class="btn" :disabled="isFirstStep" @click="prev">{{ getPrevLabel }}</button>
+          <button class="btn primary" @click="nextOrFinish">{{ getNextLabel }}</button>
         </div>
         <div v-else>
-          <button class="btn primary" @click="reset">{{ statics.labelButtonReset }}</button>
+          <button class="btn primary" @click="reset">{{ getResetLabel }}</button>
         </div>
 
       </div>
